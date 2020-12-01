@@ -23,3 +23,4 @@ yarn-debug.log*
 yarn-error.log*
 
 /src/tailwind.generated.css
+tailwind.generated.css

@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 export default function GetStarted() {
   const history = useHistory();
@@ -38,9 +38,9 @@ export default function GetStarted() {
             Start the quiz now
           </button>
           <br />
-          <a href="/register" className="text-sm underline">
+          <Link to="/register" className="text-sm underline">
             Click here if you're not yet register.
-          </a>
+          </Link>
         </div>
       </section>
     </main>
