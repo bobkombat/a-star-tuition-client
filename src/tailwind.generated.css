@@ -28876,6 +28876,10 @@ video {
   height: 36rem;
 }
 
+.w {
+  width: 36rem;
+}
+
 @media (max-width: 1279px) {
   .xl\:container {
     width: 100%;
