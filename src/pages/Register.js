@@ -14,7 +14,7 @@ export default function Register() {
   return (
     <main className="w-full h-screen bg-home font-header font-bold overflow-hidden">
       <Link
-        to="/"
+        to="/get-started"
         className="font-bold cursor-pointer bg-text text-4xl sm:m-4 m-10 inline-block hover:text-yellow-500"
       >
         &lt; Back
