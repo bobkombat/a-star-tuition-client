@@ -19,8 +19,8 @@ const question = [
     questions: "Berapakah jumlah itik yang ada di foto ini?",
     assets: [
       {
-        src: "",
-        repeat: 8,
+        src: "https://images-na.ssl-images-amazon.com/images/I/31iAToN2BEL._AC_SY400_.jpg",
+        repeat: 6,
         alt: "Foto itik",
       },
     ],
@@ -31,7 +31,7 @@ const question = [
       4: "3",
     },
     answer: {
-      3: "8",
+      1: "6",
     },
   },
   {
@@ -40,22 +40,26 @@ const question = [
       "Diantara hewan-hewan ini, hewan manakah yang tidak termasuk kedalam jenis yang sama?",
     assets: [
       {
-        src: "",
+        src:
+          "https://images.theconversation.com/files/250401/original/file-20181213-110249-1czg7z.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=200&h=200.0&fit=crop",
         repeat: 1,
         alt: "Foto kuda",
       },
       {
-        src: "",
+        src:
+          "https://bloximages.newyork1.vip.townnews.com/gjsentinel.com/content/tncms/assets/v3/editorial/a/41/a41bb520-a1e3-5507-85e5-7c62c1fd0a64/5affb53017f82.image.jpg?resize=200%2C200",
         repeat: 1,
         alt: "Foto ayam",
       },
       {
-        src: "",
+        src:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM24Ne_z5dLcWHwmRH8pjsmObokzDadDfNXA&usqp=CAU",
         repeat: 1,
         alt: "Foto buaya",
       },
       {
-        src: "",
+        src:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU62Md2yC4lIg8Mt_ZUGEVBaoXR7apfYbWbQ&usqp=CAU",
         repeat: 1,
         alt: "Foto Kucing",
       },

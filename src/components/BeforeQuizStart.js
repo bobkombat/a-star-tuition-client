@@ -3,7 +3,7 @@ import React from "react";
 export default function BeforeQuizStart({ setStart, user }) {
   return (
     <>
-      <h1 class="font-bold text-7xl my-8 text-gray-900">Hello {user}.</h1>
+      <h1 className="font-bold text-7xl my-8 text-gray-900">Hello {user}.</h1>
       <div className="shadow-lg p-16 my-5 w-3/5 bg-black font-bold text-gray-100">
         <h1 className="text-4xl underline">Before start the quiz.</h1>
         <br />
