@@ -5,7 +5,7 @@ export function getRandomizeQuestion(questionData, questionAmount) {
 export async function loginUser(userData = {}) {
   console.log(userData);
   try {
-    const data = await fetch("http://localhost:3000/user/login", {
+    const data = await fetch("https://a-star-server.herokuapp.com/user/login", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -21,7 +21,7 @@ export async function loginUser(userData = {}) {
 export async function registerUser(userData = {}) {
   console.log(userData);
   try {
-    const data = await fetch("http://localhost:3000/user/register", {
+    const data = await fetch("https://a-star-server.herokuapp.com/user/register", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -36,7 +36,7 @@ export async function registerUser(userData = {}) {
 
 export async function setLeaderboard(score) {
   try {
-    const data = await fetch("http://localhost:3000/leaderboard/create", {
+    const data = await fetch("https://a-star-server.herokuapp.com/leaderboard/create", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -52,7 +52,7 @@ export async function setLeaderboard(score) {
 
 export async function fetchLeaderboard() {
   try {
-    const data = await fetch("http://localhost:3000/leaderboard/all", {
+    const data = await fetch("https://a-star-server.herokuapp.com/leaderboard/all", {
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -68,7 +68,7 @@ export async function fetchLeaderboard() {
 
 export async function fetchLeaderboardDetail() {
   try {
-    const data = await fetch("http://localhost:3000/leaderboard/detail", {
+    const data = await fetch("https://a-star-server.herokuapp.com/leaderboard/detail", {
       method: "GET",
       headers: {
         "Content-type": "application/json",

@@ -10,7 +10,7 @@ export default function QuizList() {
   const score = useSelector((store) => store.scoreReducers.score);
   const questions = useSelector((store) => store.questionReducers.questions);
   const dispatch = useDispatch();
-  const [totalQuestion] = useState(2);
+  const [totalQuestion] = useState(10);
   const [randomizedQuestion, setRandomizeQuestion] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
 
