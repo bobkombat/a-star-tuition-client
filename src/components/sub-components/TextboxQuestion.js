@@ -12,7 +12,6 @@ export default function TextboxQuestion({ questionData, nextQuestion, questionNo
     e.preventDefault();
     setAnswer(false);
     for (let i of Object.values(questionData.answer)) {
-      console.log(i);
       if (i === answeredValue) {
         setAnswer(true);
         dispatch(increaseScore());

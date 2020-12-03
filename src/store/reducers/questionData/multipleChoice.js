@@ -95,6 +95,48 @@ const question = [
       2: "Wanita muda",
     },
   },
+  {
+    type: "MULTIPLE_CHOICE",
+    questions: "Siapakah pahlawan dibawah ini?",
+    assets: [
+      {
+        src:
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Soekarno.jpg/220px-Soekarno.jpg",
+        repeat: 1,
+        alt: "Foto pahlawan",
+      },
+    ],
+    choices: {
+      1: "Soedirman",
+      2: "Soeharto",
+      3: "Soekarno",
+      4: "Soekarni",
+    },
+    answer: {
+      3: "Soekarno",
+    },
+  },
+  {
+    type: "MULTIPLE_CHOICE",
+    questions: "Hewan apakah di gambar dibawah ini?",
+    assets: [
+      {
+        src:
+          "https://kids.kiddle.co/images/thumb/b/b4/Cow_eating_some_grass.jpg/300px-Cow_eating_some_grass.jpg",
+        repeat: 1,
+        alt: "Foto hewan",
+      },
+    ],
+    choices: {
+      1: "Harimau",
+      2: "Kuda",
+      3: "Sapi",
+      4: "Cicak",
+    },
+    answer: {
+      3: "Sapi",
+    },
+  },
 ];
 
 export default question;

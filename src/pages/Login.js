@@ -1,13 +1,47 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { loginUser } from "../utils";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [err, setErr] = useState(true);
+  const history = useHistory();
 
-  function submitLogin(e) {
+  async function submitLogin(e) {
     e.preventDefault();
-    console.log(email, password);
+
+    try {
+      const data = await loginUser({ email, password });
+      console.log(data);
+      if (data === undefined) {
+        setErr(false);
+      }
+
+      if (data.access_token) {
+        localStorage.access_token = data.access_token;
+        localStorage.username = data.username;
+        localStorage.id = data.id;
+        history.push("/get-started");
+      }
+      setEmail("");
+      setPassword("");
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  function resetForm() {
+    setEmail("");
+    setPassword("");
+  }
+
+  useEffect(() => {
+    setErr(true);
+  }, []);
+
+  if (localStorage.id && localStorage.username && localStorage.access_token) {
+    history.push("/");
   }
 
   return (
@@ -23,6 +57,9 @@ export default function Login() {
           className="shadow-2xl z-10 p-10 sm:mt-0 mt-10 bg-black w-96 sm:w-full text-gray-100"
           onSubmit={submitLogin}
         >
+          {!err && (
+            <h1 className="p-2 bg-red-500 text-gray-100">Username/Password is wrong try again.</h1>
+          )}
           <label name="email" className="text-2xl">
             Email
             <input
@@ -32,6 +69,7 @@ export default function Login() {
               name="email"
               autoComplete="off"
               value={email}
+              required
               onChange={(e) => setEmail(e.target.value)}
             />
           </label>
@@ -44,6 +82,7 @@ export default function Login() {
               name="password"
               autoComplete="off"
               value={password}
+              required
               onChange={(e) => setPassword(e.target.value)}
             />
           </label>
@@ -57,6 +96,7 @@ export default function Login() {
             <button
               type="reset"
               className="bg-red-600 m-1 p-2 font-bold hover:bg-red-500 text-lg text-gray-100"
+              onClick={resetForm}
             >
               Cancel
             </button>

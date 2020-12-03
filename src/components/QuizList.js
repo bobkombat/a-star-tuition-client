@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { resetScore } from "../store/actions/scoreActions.js";
-import { getRandomizeQuestion } from "../utils/index.js";
+import { getRandomizeQuestion, setLeaderboard } from "../utils/index.js";
 import MultipleChoice from "./sub-components/MultipleChoice.js";
 import TextboxQuestion from "./sub-components/TextboxQuestion.js";
 
@@ -10,7 +10,7 @@ export default function QuizList() {
   const score = useSelector((store) => store.scoreReducers.score);
   const questions = useSelector((store) => store.questionReducers.questions);
   const dispatch = useDispatch();
-  const [totalQuestion] = useState(10);
+  const [totalQuestion] = useState(2);
   const [randomizedQuestion, setRandomizeQuestion] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
 
@@ -22,6 +22,15 @@ export default function QuizList() {
     setRandomizeQuestion(getRandomizeQuestion(questions, totalQuestion));
     dispatch(resetScore());
   }, [questions, totalQuestion, dispatch]);
+
+  if (
+    randomizedQuestion.length > 0 &&
+    randomizedQuestion.length === currentQuestion &&
+    localStorage.username
+  ) {
+    console.log("masuk sini");
+    setLeaderboard(score);
+  }
 
   return (
     <>
@@ -42,11 +51,22 @@ export default function QuizList() {
             questionNo={currentQuestion + 1}
           />
         )}
-      {randomizedQuestion.length !== currentQuestion + 1 ? (
+      {randomizedQuestion.length !== currentQuestion ? (
         <Link to="/get-started" className="underline hover:text-gray-600 font-bold text-2xl m-4">
           Give Up?
         </Link>
-      ) : null}
+      ) : (
+        <div className="font-bold text-xl text-center text-gray-900">
+          <h1>Thanks for taking the quiz.</h1>
+          <h4>
+            Your final score is {score} / {totalQuestion}
+          </h4>
+          <h5>If you are a registered user check the leaderboard for your final result.</h5>
+          <Link to="/get-started" className="underline hover:text-gray-600 font-bold text-2xl m-4">
+            Try Again?
+          </Link>
+        </div>
+      )}
     </>
   );
 }

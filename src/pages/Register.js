@@ -1,14 +1,41 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { registerUser } from "../utils";
 
 export default function Register() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [err, setErr] = useState(false);
+  const history = useHistory();
 
-  function submitRegister(e) {
+  async function submitRegister(e) {
     e.preventDefault();
-    console.log(username, email, password);
+    const data = await registerUser({ username, email, password });
+    console.log(data);
+    setUsername("");
+    setEmail("");
+    setPassword("");
+
+    if (data === undefined) {
+      setErr(false);
+    } else {
+      history.push("/get-started");
+    }
+  }
+
+  function resetForm() {
+    setUsername("");
+    setEmail("");
+    setPassword("");
+  }
+
+  useEffect(() => {
+    setErr(true);
+  }, []);
+
+  if (localStorage.id && localStorage.username && localStorage.access_token) {
+    history.push("/");
   }
 
   return (
@@ -19,6 +46,9 @@ export default function Register() {
       >
         &lt; Back
       </Link>
+      {!err && (
+        <h1 className="p-2 bg-red-500 text-gray-100">User is already exist please login.</h1>
+      )}
       <section className="w-8/12 sm:w-11/12 sm:h-full h-2/3 mx-auto flex justify-center items-center">
         <form
           className="shadow-2xl z-10 p-10 sm:mt-0 mt-10 bg-black w-96 sm:w-full text-gray-100"
@@ -33,6 +63,7 @@ export default function Register() {
               name="username"
               autoComplete="off"
               value={username}
+              required
               onChange={(e) => setUsername(e.target.value)}
             />
           </label>
@@ -45,6 +76,7 @@ export default function Register() {
               name="email"
               autoComplete="off"
               value={email}
+              required
               onChange={(e) => setEmail(e.target.value)}
             />
           </label>
@@ -57,6 +89,7 @@ export default function Register() {
               name="password"
               autoComplete="off"
               value={password}
+              required
               onChange={(e) => setPassword(e.target.value)}
             />
           </label>
@@ -70,6 +103,7 @@ export default function Register() {
             <button
               type="reset"
               className="bg-red-600 m-1 p-2 font-bold hover:bg-red-500 text-lg text-gray-100"
+              onClick={resetForm}
             >
               Cancel
             </button>
