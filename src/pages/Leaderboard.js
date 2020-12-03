@@ -24,7 +24,7 @@ export default function Leaderboard() {
           &lt; Back
         </Link>
         <h1 className="text-5xl my-5">Leaderboard data.</h1>
-        {leaderboardData.length > 1 ? (
+        {leaderboardData.length > 0 ? (
           <table className="text-3xl py-2 border-collapse">
             <thead>
               <tr>
